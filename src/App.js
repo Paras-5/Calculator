@@ -22,6 +22,9 @@ function reducer(state,{type,payload}){
       ...state,
       currentoperand:`${state.currentoperand || ""}${payload.digit}`,
     }
+    case actions.clear: {
+      return { }
+    }
 
   }
 
@@ -40,7 +43,7 @@ function App() {
         <div className="previous_operand">{previousoperand} {operation}</div>
         <div className="current_operator">{currentoperand}</div>
       </div>
-      <button className="span_two">AC</button>
+      <button className="span_two" onClick={() => dispatch({type: actions.clear})}>AC</button>
       <button>DEL</button>
       <Operationbutton operation = "/" dispatch={dispatch} />
       <Digitbutton digit = "1" dispatch={dispatch} />
